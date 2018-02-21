@@ -1,22 +1,37 @@
-From 44e9ef9673d532a51a4a5f7d2c06308d2941cee7 Mon Sep 17 00:00:00 2001
-From: Andrei Gherzan <andrei@resin.io>
-Date: Wed, 3 Aug 2016 17:10:29 +0100
-Subject: [PATCH 2/5] compiler-gcc6.h: Add support for GCC6
+From 33b7d03c53b70f5ecb8b72ebd4d6fddf4981c9ba Mon Sep 17 00:00:00 2001
+From: Pierre-Jean TEXIER <texier.pj2@gmail.com>
+Date: Wed, 21 Feb 2018 19:53:17 +0100
+Subject: [PATCH 5/5] linux/compiler: fix build for gcc7
 
-Upstream-Status: Inappropiate [Configuration]
+Avoid the following issue:
 
-Signed-off-by: Andrei Gherzan <andrei@resin.io>
+| In file included from /home/pjtexier/Bureau/Yocto/artik_bsp/build/tmp/work/artik710-poky-linux/u-boot-artik710/1.0-r0/git/include/linux/compiler.h:54:0,
+|                  from /home/pjtexier/Bureau/Yocto/artik_bsp/build/tmp/work/artik710-poky-linux/u-boot-artik710/1.0-r0/git/include/linux/bitops.h:5,
+|                  from /home/pjtexier/Bureau/Yocto/artik_bsp/build/tmp/work/artik710-poky-linux/u-boot-artik710/1.0-r0/git/include/common.h:20:
+| /home/pjtexier/Bureau/Yocto/artik_bsp/build/tmp/work/artik710-poky-linux/u-boot-artik710/1.0-r0/git/include/linux/compiler-gcc.h:114:1: fatal error: linux/compiler-gcc7.h: No such file or directory
+|  #include gcc_header(__GNUC__)
+|  ^~~~
+| compilation terminated.
+| In file included from /home/pjtexier/Bureau/Yocto/artik_bsp/build/tmp/work/artik710-poky-linux/u-boot-artik710/1.0-r0/git/include/linux/compiler.h:54:0,
+|                  from /home/pjtexier/Bureau/Yocto/artik_bsp/build/tmp/work/artik710-poky-linux/u-boot-artik710/1.0-r0/git/include/linux/bitops.h:5,
+|                  from /home/pjtexier/Bureau/Yocto/artik_bsp/build/tmp/work/artik710-poky-linux/u-boot-artik710/1.0-r0/git/include/common.h:20:
+| /home/pjtexier/Bureau/Yocto/artik_bsp/build/tmp/work/artik710-poky-linux/u-boot-artik710/1.0-r0/git/include/linux/compiler-gcc.h:114:1: fatal error: linux/compiler-gcc7.h: No such file or directory
+|  #include gcc_header(__GNUC__)
+|  ^~~~
+| compilation terminated.
+
+Signed-off-by: Pierre-Jean TEXIER <texier.pj2@gmail.com>
 ---
- include/linux/compiler-gcc6.h | 65 +++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 65 insertions(+)
- create mode 100644 include/linux/compiler-gcc6.h
+ include/linux/compiler-gcc7.h | 66 +++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 66 insertions(+)
+ create mode 100644 include/linux/compiler-gcc7.h
 
-diff --git a/include/linux/compiler-gcc6.h b/include/linux/compiler-gcc6.h
+diff --git a/include/linux/compiler-gcc7.h b/include/linux/compiler-gcc7.h
 new file mode 100644
-index 0000000..c8c5659
+index 0000000..cdd1cc2
 --- /dev/null
-+++ b/include/linux/compiler-gcc6.h
-@@ -0,0 +1,65 @@
++++ b/include/linux/compiler-gcc7.h
+@@ -0,0 +1,66 @@
 +#ifndef __LINUX_COMPILER_H
 +#error "Please don't include <linux/compiler-gcc5.h> directly, include <linux/compiler.h> instead."
 +#endif
@@ -72,6 +87,7 @@ index 0000000..c8c5659
 + *   http://gcc.gnu.org/bugzilla/show_bug.cgi?id=58670
 + *
 + * Work it around via a compiler barrier quirk suggested by Jakub Jelinek.
++ * Fixed in GCC 4.8.2 and later versions.
 + *
 + * (asm goto is automatically volatile - the naming reflects this.)
 + */

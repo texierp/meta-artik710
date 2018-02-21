@@ -1,7 +1,7 @@
 From 855bc5a1a59331ca1d4796f35ffac5de2ef1651f Mon Sep 17 00:00:00 2001
 From: Andrei Gherzan <andrei@resin.io>
 Date: Mon, 13 Mar 2017 20:30:26 +0100
-Subject: [PATCH 1/7] artik710_raptor.h: Set CONFIG_ROOT_PART to 2
+Subject: [PATCH 1/5] artik710_raptor.h: Set CONFIG_ROOT_PART to 2
 
 Upstream-Status: Inappropiate [Configuration]
 

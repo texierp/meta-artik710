@@ -1,7 +1,7 @@
 From 3de34fe2ec7a84c1ba07b71ae3739580da774492 Mon Sep 17 00:00:00 2001
 From: Andrei Gherzan <andrei@resin.io>
 Date: Mon, 13 Mar 2017 20:32:22 +0100
-Subject: [PATCH 3/7] artik710_raptor.h: Boot partition is a fat one
+Subject: [PATCH 3/5] artik710_raptor.h: Boot partition is a fat one
 
 Upstream-Status: Inappropiate [Configuration]
 

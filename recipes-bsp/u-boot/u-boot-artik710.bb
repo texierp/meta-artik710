@@ -17,6 +17,7 @@ SRC_URI_artik710 = " \
     file://0002-compiler-gcc6.h-Add-support-for-GCC6.patch \
     file://0003-artik710_raptor.h-Boot-partition-is-a-fat-one.patch \
     file://0004-artik710_raptor.h-Use-rootwait.patch \
+    file://0005-linux-compiler-fix-build-for-gcc7.patch \
     "
 
 S = "${WORKDIR}/git"
