@@ -4,7 +4,7 @@ PACKAGECONFIG_GL = "gles2 kms eglfs"
 PACKAGECONFIG_FONTS = "fontconfig"
 
 PACKAGECONFIG_append = " accessibility sql-sqlite tslib libinput"					
-PACKAGECONFIG_remove = " directfb gl"
+PACKAGECONFIG_remove = "directfb gl"
 
 do_configure_prepend() {
 # adapt qmake.conf to our needs
